@@ -13,14 +13,18 @@ class Autoload {
 	 * @var string[]
 	 */
 	private static array $classmap = [
-		'EmiliaProjects\WP\Comment\Admin\Admin'          => 'admin/admin.php',
-		'EmiliaProjects\WP\Comment\Admin\Comment_Parent' => 'admin/comment-parent.php',
-		'EmiliaProjects\WP\Comment\Inc\Clean_Emails'     => 'inc/clean-emails.php',
-		'EmiliaProjects\WP\Comment\Inc\Email_Links'      => 'inc/email-links.php',
-		'EmiliaProjects\WP\Comment\Inc\Forms'            => 'inc/forms.php',
-		'EmiliaProjects\WP\Comment\Inc\Hacks'            => 'inc/hacks.php',
-		'EmiliaProjects\WP\Comment\Inc\Length'           => 'inc/length.php',
-		'EmiliaProjects\WP\Comment\Inc\Notifications'    => 'inc/notifications.php',
+		'EmiliaProjects\WP\Comment\Admin\Admin'                             => 'admin/admin.php',
+		'EmiliaProjects\WP\Comment\Admin\Comment_Parent'                    => 'admin/comment-parent.php',
+		'EmiliaProjects\WP\Comment\Inc\Clean_Emails'                        => 'inc/clean-emails.php',
+		'EmiliaProjects\WP\Comment\Inc\Email_Links'                         => 'inc/email-links.php',
+		'EmiliaProjects\WP\Comment\Inc\Forms'                               => 'inc/forms.php',
+		'EmiliaProjects\WP\Comment\Inc\Hacks'                               => 'inc/hacks.php',
+		'EmiliaProjects\WP\Comment\Inc\Length'                              => 'inc/length.php',
+		'EmiliaProjects\WP\Comment\Inc\Notifications'                       => 'inc/notifications.php',
+		'EmiliaProjects\WP\Comment\Inc\Progress_Planner_Tasks'              => 'inc/progress-planner-tasks.php',
+		'EmiliaProjects\WP\Comment\Inc\Progress_Planner\Comment_Policy'     => 'inc/progress-planner/comment-policy.php',
+		'EmiliaProjects\WP\Comment\Inc\Progress_Planner\Comment_Redirect'   => 'inc/progress-planner/comment-redirect.php',
+		'EmiliaProjects\WP\Comment\Inc\Progress_Planner\Comment_Moderation' => 'inc/progress-planner/comment-moderation.php',
 	];
 
 	/**
