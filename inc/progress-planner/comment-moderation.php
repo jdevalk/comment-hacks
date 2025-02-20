@@ -3,20 +3,28 @@
 namespace EmiliaProjects\WP\Comment\Inc\Progress_Planner;
 
 use EmiliaProjects\WP\Comment\Inc\Hacks;
+use Progress_Planner\Suggested_Tasks\Local_Tasks\Providers\Repetitive\Repetitive;
 
 /**
  * Task for the comment moderation.
  */
-class Comment_Moderation extends \Progress_Planner\Suggested_Tasks\Local_Tasks\Providers\Repetitive\Repetitive {
+class Comment_Moderation extends Repetitive {
 
 	/**
 	 * The provider ID.
 	 *
 	 * @var string
 	 */
-	const ID = 'ch-comment-moderation';
+	public const ID = 'ch-comment-moderation';
 
-    /**
+	/**
+	 * The provider type. This is used to determine the type of task.
+	 *
+	 * @var string
+	 */
+	public const TYPE = 'maintenance';
+
+	/**
 	 * The capability required to perform the task.
 	 *
 	 * @var string
@@ -24,25 +32,18 @@ class Comment_Moderation extends \Progress_Planner\Suggested_Tasks\Local_Tasks\P
 	protected $capability = 'moderate_comments';
 
 	/**
-	 * The provider type. This is used to determine the type of task.
-	 *
-	 * @var string
-	 */
-	const TYPE = 'maintenance';
-
-    /**
 	 * Holds our options.
 	 *
 	 * @var string[]
 	 */
 	private array $options;
 
-    /**
-     * Class constructor.
-     */
-    public function __construct() {
-        $this->options = Hacks::get_options();
-    }
+	/**
+	 * Class constructor.
+	 */
+	public function __construct() {
+		$this->options = Hacks::get_options();
+	}
 
 	/**
 	 * Check if the task should be added.
@@ -50,10 +51,12 @@ class Comment_Moderation extends \Progress_Planner\Suggested_Tasks\Local_Tasks\P
 	 * @return bool
 	 */
 	public function should_add_task() {
-		$comments = \get_comments( [
-			'status' => 'hold',
-			'count'  => true,
-		] );
+		$comments = \get_comments(
+			[
+				'status' => 'hold',
+				'count'  => true,
+			]
+		);
 
 		return $comments > 0;
 	}
@@ -63,7 +66,16 @@ class Comment_Moderation extends \Progress_Planner\Suggested_Tasks\Local_Tasks\P
 	 *
 	 * @param string $task_id The task ID.
 	 *
-	 * @return array
+	 * @return array{
+	 *           task_id: string,
+	 *           title: string,
+	 *           parent: int,
+	 *           priority: string,
+	 *           type: string,
+	 *           points: int,
+	 *           url: string,
+	 *           description: string
+	 *         } The task details.
 	 */
 	public function get_task_details( $task_id = '' ) {
 
