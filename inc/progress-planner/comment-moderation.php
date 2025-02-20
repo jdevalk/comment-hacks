@@ -16,6 +16,13 @@ class Comment_Moderation extends \Progress_Planner\Suggested_Tasks\Local_Tasks\P
 	 */
 	const ID = 'ch-comment-moderation';
 
+    /**
+	 * The capability required to perform the task.
+	 *
+	 * @var string
+	 */
+	protected $capability = 'moderate_comments';
+
 	/**
 	 * The provider type. This is used to determine the type of task.
 	 *
